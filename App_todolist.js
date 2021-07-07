@@ -8,18 +8,23 @@ import Form from './components/form';
 
 export default function App() {
    const [listOfItems,setListOfItems] = useState([
-       {text: 'Зарядка', index: 1},
-       {text: 'Медитация', index: 2},
-       {text: 'Работа', index: 3},
-       {text: 'Позвонить маме', index: 4}
+       {text: 'Зарядка', key: '1'},
+       {text: 'Медитация', key: '2'},
+       {text: 'Работа', key: '3'},
+       {text: 'Позвонить маме', key: '4'}
    ])
     const addHandler = (text) => {
        setListOfItems((list) => {
            return [
-               {text: text, index: 5},
+               {text: text, key: Math.random().toString(36).substring(7)},
                ...list
            ]
        })
+    }
+    const deleteHandler = (key) => {
+       setListOfItems((list) => {
+           return list.filter(listOfItems => listOfItems.key != key)
+       });
     }
     return (
         <View>
@@ -27,7 +32,7 @@ export default function App() {
             <Form addHandler={addHandler} />
                 <View>
                   <FlatList data={listOfItems} renderItem={({item}) => (
-                      <ListItem element={item} />
+                      <ListItem element={item} deleteHandler={deleteHandler}/>
                   ) } />
                 </View>
         </View>

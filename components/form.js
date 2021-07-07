@@ -10,7 +10,7 @@ export default function Form({addHandler}) {
     return (
         <View>
             <TextInput style={styles.input} onChangeText={onChange} placeholder='Впишите задачу'/>
-            <Button color='pink' onPress={() => addHandlerndler(text)} title='добавить задачу'/>
+            <Button color='pink' onPress={() => addHandler(text)} title='добавить задачу'/>
         </View>
     );
 }

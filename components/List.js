@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableHighlight} from 'react-native';
 
-export default function ListItem({element}) {
+export default function ListItem({element,deleteHandler}) {
     return (
-        <TouchableHighlight>
+        <TouchableHighlight onPress={() => deleteHandler(element.key)}>
             <Text style={styles.text}>{element.text}</Text>
         </TouchableHighlight>
     );
